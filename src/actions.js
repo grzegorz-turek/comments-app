@@ -1,6 +1,6 @@
-import uuid from "uuid";
+import uuid from 'uuid';
 
-export const ADD_COMMENT = "ADD_COMMENT";
+export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_THUMB_UP = 'ADD_THUMB_UP';
 export const ADD_THUMB_DOWN = 'ADD_THUMB_DOWN';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
