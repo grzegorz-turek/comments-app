@@ -3,10 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { reducer } from "./reducer";
+import { addComment } from "./actions";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const boundAddComment = (text) => store.dispatch(addComment(text));// --------------------------------- TEST ---------------------------------
+const store = createStore(reducer);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
+store.dispatch(addComment("First comment"));
+store.dispatch(addComment("Second comment"));
+boundAddComment('Second and a half comment');// --------------------------------- TEST ---------------------------------
+store.subscribe(() => console.log('state change detected: ', store.getState()));// --------------------------------- TEST ---------------------------------
+//store.subscribe(() => console.log('state change detected'));// --------------------------------- TEST ---------------------------------
+
 serviceWorker.unregister();
